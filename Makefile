@@ -6,14 +6,14 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/30 10:56:36 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/08/30 11:28:39 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= cub3d
 
 COMPILER 	= cc
-CFLAGS 		= #-Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror
 
 MYLIBS 		= libft/libft.a
 LIBS 		= -lm

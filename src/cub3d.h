@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 10:56:56 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/30 11:13:22 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # else
 #  include "../ext/mlx.h"
 # endif
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -65,6 +66,7 @@ t_data	*data_init(void);
 
 //* UTILS *//
 
+void	error_exit(char *str);
 void	cub_exit(t_data *data, int exit_code);
 void	free_all(t_data *data);
 void	mlx_destroy(t_data *data);
