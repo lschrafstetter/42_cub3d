@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhooks.c                                         :+:      :+:    :+:   */
+/*   parse_map_tiles.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 10:58:57 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 14:33:53 by lschrafs         ###   ########.fr       */
+/*   Created: 2022/08/30 15:53:52 by lschrafs          #+#    #+#             */
+/*   Updated: 2022/08/30 16:17:05 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	hook_key_press(int keycode, t_data *data)
+void	parse_map_tiles(t_data *data, char *map_path)
 {
 	(void) data;
-	printf("Pressed key: %i!\n", keycode);
-	return (0);
-}
-
-int	hook_key_release(int keycode, t_data *data)
-{
-	(void) data;
-	printf("Released key: %i!\n", keycode);
-	return (0);
+	(void) map_path;
 }

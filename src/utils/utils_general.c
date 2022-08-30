@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhooks.c                                         :+:      :+:    :+:   */
+/*   utils_general.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 10:58:57 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 14:33:53 by lschrafs         ###   ########.fr       */
+/*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
+/*   Updated: 2022/08/30 16:49:46 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	hook_key_press(int keycode, t_data *data)
+void	free_strarray(char **arr)
 {
-	(void) data;
-	printf("Pressed key: %i!\n", keycode);
-	return (0);
-}
+	int	i;
 
-int	hook_key_release(int keycode, t_data *data)
-{
-	(void) data;
-	printf("Released key: %i!\n", keycode);
-	return (0);
+	if (arr)
+	{
+		i = 0;
+		while (arr[i])
+		{
+			free(arr[i]);
+			i++;
+		}
+		free(arr);
+		arr = NULL;
+	}
 }

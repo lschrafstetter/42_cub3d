@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/30 13:36:30 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/08/30 16:58:01 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,17 @@ UTILS		=	utils/
 
 SRCS_NAMES	= 	main \
 				$(INIT)init \
+				$(INIT)parse_map_file \
+				$(INIT)parse_map_properties \
+				$(INIT)parse_map_tiles \
+				$(INIT)parse_map_floor_ceiling \
 				$(HOOKS)keyhooks \
 				$(HOOKS)mousehooks \
 				$(HOOKS)others \
 				$(EXIT)exit \
 				$(EXIT)free \
+				$(UTILS)utils_parse \
+				$(UTILS)utils_general \
 
 OS = $(shell uname)
 ifeq ($(OS), Linux)
