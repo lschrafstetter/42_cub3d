@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 10:00:24 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/30 10:56:56 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,29 @@ typedef struct s_player
 	int		dir;
 }	t_player;
 
+typedef struct s_settings
+{
+	int			screen_width;
+	int			screen_height;
+}	t_settings;
+
 typedef struct s_data
 {
 	t_map		*map;
 	t_player	*player;
+	t_settings	*settings;
 	void		*mlx;
 	void		*win;
-	int			screen_width;
-	int			screen_height;
 }	t_data;
+
+//* INIT AND PARSING *//
+
+t_data	*data_init(void);
+
+//* UTILS *//
+
+void	cub_exit(t_data *data, int exit_code);
+void	free_all(t_data *data);
+void	mlx_destroy(t_data *data);
 
 #endif
