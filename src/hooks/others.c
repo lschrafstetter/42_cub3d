@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhooks.c                                         :+:      :+:    :+:   */
+/*   others.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 10:58:57 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 13:35:40 by lschrafs         ###   ########.fr       */
+/*   Created: 2022/08/30 13:33:20 by lschrafs          #+#    #+#             */
+/*   Updated: 2022/08/30 13:33:42 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	hook_key_press(int keycode, t_data *data)
+int	hook_exit(t_data *data)
 {
-	(void) data;
-	printf("Pressed key: %i!\n", keycode);
-	return (0);
-}
-
-int	hook_key_release(int keycode, t_data *data)
-{
-	(void) data;
-	printf("Released key: %i!\n", keycode);
+	cub_exit(data, 0);
 	return (0);
 }

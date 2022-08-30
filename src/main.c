@@ -6,25 +6,11 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 11:31:37 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:09:51 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	hook_exit(t_data *data)
-{
-	cub_exit(data, 0);
-	return (0);
-}
-
-int	hook_key(int keycode, t_data *data)
-{
-	(void) keycode;
-	(void) data;
-	printf("Test!\n");
-	return (0);
-}
 
 int	render_next_frame(t_data *data)
 {
@@ -42,7 +28,10 @@ int	main(int argc, char **argv)
 			ft_strncmp(ft_strrchr(argv[1], '.'), ".cub", 5) != 0)
 		error_exit("Usage: [./cub3d <map.cub>]");
 	data = data_init();
-	mlx_key_hook(data->win, hook_key, data);
+	//mlx_key_hook(data->win, hook_key_press, data);
+	mlx_hook(data->win, 2, 1L << 0, hook_key_press, data);
+	mlx_hook(data->win, 3, 1L << 1, hook_key_release, data);
+	mlx_hook(data->win, 6, 1L << 6, hook_mouse, data);
 	mlx_hook(data->win, 17, 0, hook_exit, data);
 	mlx_loop_hook(data->mlx, render_next_frame, data);
 	mlx_loop(data->mlx);

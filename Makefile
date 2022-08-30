@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/30 11:28:39 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/08/30 13:36:30 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,9 @@ UTILS		=	utils/
 
 SRCS_NAMES	= 	main \
 				$(INIT)init \
+				$(HOOKS)keyhooks \
+				$(HOOKS)mousehooks \
+				$(HOOKS)others \
 				$(EXIT)exit \
 				$(EXIT)free \
 

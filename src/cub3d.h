@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 11:13:22 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/30 13:35:59 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,53 @@
 # include <stdio.h>
 # include <math.h>
 
+# ifdef __linux__
+// Linux
+enum e_keys
+{
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 100,
+	KEY_W = 119,
+	KEY_ARROW_UP = 65362,
+	KEY_ARROW_DOWN = 65364,
+	KEY_ARROW_LEFT = 65361,
+	KEY_ARROW_RIGHT = 65363,
+	KEY_ESCAPE = 65307
+};
+# else
+// Mac
+enum e_keys
+{
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_W = 13,
+	KEY_ESCAPE = 53
+};
+# endif
+
+typedef struct s_rgb_triple
+{
+	__uint8_t	r;
+	__uint8_t	g;
+	__uint8_t	b;
+}	t_rgb_triple;
+
+typedef struct s_images
+{
+	t_rgb_triple	**wall_n;
+	t_rgb_triple	**wall_e;
+	t_rgb_triple	**wall_s;
+	t_rgb_triple	**wall_w;
+}	t_images;
+
 enum e_tile
 {
-	tile_floor = 0,
-	tile_wall = 1,
-	tile_door = 2
+	tile_empty = 0,
+	tile_floor = 1,
+	tile_wall = 2,
+	tile_door = 3
 };
 
 typedef struct s_map
@@ -54,6 +96,7 @@ typedef struct s_settings
 typedef struct s_data
 {
 	t_map		*map;
+	t_images	*images;
 	t_player	*player;
 	t_settings	*settings;
 	void		*mlx;
@@ -63,6 +106,13 @@ typedef struct s_data
 //* INIT AND PARSING *//
 
 t_data	*data_init(void);
+
+//* KEY AND MOUSE EVENTS *//
+
+int		hook_key_press(int keycode, t_data *data);
+int		hook_key_release(int keycode, t_data *data);
+int		hook_mouse(int x, int y, t_data *data);
+int		hook_exit(t_data *data);
 
 //* UTILS *//
 
