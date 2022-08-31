@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/30 16:58:01 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/08/30 17:42:40 by dfranke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ ifeq ($(OS), Linux)
 	SRCS_NAMES += $(EXIT)destroy_linux
 endif
 ifeq ($(OS), Darwin)
-	LIBS +=  ext/libmlx.a -L./ext/ -lmlx -framework OpenGL -framework AppKit
+	LIBS +=  mlx/libmlx.a -L./mlx/ -lmlx -framework OpenGL -framework AppKit
 	SRCS_NAMES += $(EXIT)destroy_mac
 endif
 

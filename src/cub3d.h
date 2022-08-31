@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 16:57:18 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:42:50 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # ifdef __linux__
 #  include <mlx.h>
 # else
-#  include "../ext/mlx.h"
+#  include "../mlx/mlx.h"
 # endif
 # include "../libft/libft.h"
 # include <stdlib.h>
