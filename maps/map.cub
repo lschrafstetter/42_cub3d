@@ -1,7 +1,7 @@
-NO ./assets/bark.xpm
-SO ./assets/planks.xpm
-WE ./assets/bookshelf.xpm
-EA ./assets/grass.xpm
+NO ./maps/assets/bark.xpm
+SO ./maps/assets/planks.xpm
+WE ./maps/assets/meme.xpm
+EA ./maps/assets/grass.xpm
 
 F 190,200,195
 C 37,180,104

@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:52:48 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 17:11:08 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/31 11:03:19 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	parse_str(t_data *data, char *str)
 		error_msg_exit(data, "Wrong input!");
 	if (is_no_ea_so_we(str))
 	{
-		//parse_wall_image(data, str);
+		parse_wall_image(data, str);
 		return ;
 	}
 	if (!ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
@@ -55,7 +55,8 @@ void	parse_map_properties(t_data *data, char *map_path)
 		free(str);
 		str = get_next_line(fd);
 	}
+	close(fd);
 	printf("Height: %i Width: %i\n", data->map->heigth, data->map->width);
-	printf("Colors floor: r: %i, g: %i, b: %i\n", data->map->c_floor->r, data->map->c_floor->g, data->map->c_floor->b);
-	printf("Colors ceiling: r: %i, g: %i, b: %i\n", data->map->c_ceiling->r, data->map->c_ceiling->g, data->map->c_ceiling->b);
+	//printf("Colors floor: r: %i, g: %i, b: %i\n", data->map->c_floor->r, data->map->c_floor->g, data->map->c_floor->b);
+	//printf("Colors ceiling: r: %i, g: %i, b: %i\n", data->map->c_ceiling->r, data->map->c_ceiling->g, data->map->c_ceiling->b);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 17:42:50 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/08/31 15:48:40 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #  include "../mlx/mlx.h"
 # endif
 # include "../libft/libft.h"
+# include "utils/hashtable.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
@@ -58,13 +59,24 @@ typedef struct s_rgb_triple
 	__uint8_t	b;
 }	t_rgb_triple;
 
-typedef struct s_images
+typedef struct s_image
 {
-	t_rgb_triple	**wall_n;
-	t_rgb_triple	**wall_e;
-	t_rgb_triple	**wall_s;
-	t_rgb_triple	**wall_w;
-}	t_images;
+	struct s_hashlist	***hashtable;
+	struct s_data		*data;
+	int					**pixels;
+	int					width;
+	int					height;
+	int					n_keys;
+	int					key_len;
+}	t_image;
+
+typedef struct s_walls
+{
+	t_image	*n;
+	t_image	*e;
+	t_image	*s;
+	t_image	*w;
+}	t_walls;
 
 enum e_tile
 {
@@ -81,8 +93,9 @@ enum e_tile
 typedef struct s_map
 {
 	int				**map;
-	t_rgb_triple	*c_floor;
-	t_rgb_triple	*c_ceiling;
+	t_walls			*walls;
+	int				*c_floor;
+	int				*c_ceiling;
 	int				map_found;
 	int				heigth;
 	int				width;
@@ -104,7 +117,6 @@ typedef struct s_settings
 typedef struct s_data
 {
 	t_map		*map;
-	t_images	*images;
 	t_player	*player;
 	t_settings	*settings;
 	void		*mlx;
@@ -118,6 +130,10 @@ void	parse_map_file(t_data *data, char *map_path);
 void	parse_map_properties(t_data *data, char *map_path);
 void	parse_floor_ceiling(t_data *data, char *str);
 void	parse_map_tiles(t_data *data, char *map_path);
+void	parse_wall_image(t_data *data, char *str);
+void	wall_parse_properties(t_image *wall, char *line, t_data *data, int fd);
+void	wall_parse_keys(t_image *wall, char *line, t_data *data, int fd);
+void	wall_parse_pixels(t_image *wall, char *line, int fd, int i);
 
 //* KEY AND MOUSE EVENTS *//
 
@@ -130,6 +146,7 @@ int		hook_exit(t_data *data);
 
 int		is_no_ea_so_we(char *str);
 int		is_map_line(char *str);
+int		*encode_rgb(__uint8_t red, __uint8_t green, __uint8_t blue);
 
 //* UTILS EXIT *//
 
@@ -141,6 +158,12 @@ void	mlx_destroy(t_data *data);
 
 //* UTILS GENERAL *//
 
+int		is_hex(char *str);
+int		is_number(char *str);
 void	free_strarray(char **arr);
+int		str_arr_len(char **str_arr);
+void	free_intarray(int **int_arr);
+int		**array_init(int height, int width);
+char	*get_first_n_chars(char *str, int n_chars);
 
 #endif

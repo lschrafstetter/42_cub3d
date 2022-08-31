@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:25:26 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/30 16:36:29 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:46:02 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ static t_map	*map_init(t_data *data)
 	map = malloc(sizeof(t_map));
 	if (!map)
 		error_msg_exit(data, "Error malloc'ing map struct!\n");
+	map->walls = malloc(sizeof(t_walls));
+	if (!(map->walls))
+		error_msg_exit(data, "Error malloc'ing wall struct!\n");
+	map->walls->n = NULL;
+	map->walls->e = NULL;
+	map->walls->s = NULL;
+	map->walls->w = NULL;
 	map->map = NULL;
 	map->c_ceiling = NULL;
 	map->c_floor = NULL;

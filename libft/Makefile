@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+         #
+#    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 17:39:13 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/17 14:51:24 by dfranke          ###   ########.fr        #
+#    Updated: 2022/08/31 09:52:43 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = \
 		ft_memcmp ft_strnstr ft_atoi ft_strncmp ft_strdup ft_calloc \
 		ft_substr ft_strjoin ft_strtrim ft_split ft_itoa ft_strmapi \
 		ft_striteri ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
-		ft_atoi_e ft_strthreejoin \
+		ft_atoi_e ft_atoi_base_e ft_strthreejoin \
 		\
 		ft_printf ft_printchar ft_printstring ft_printint ft_printuint \
 		ft_printhex \

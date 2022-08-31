@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+         #
+#    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/30 17:42:40 by dfranke          ###   ########.fr        #
+#    Updated: 2022/08/31 14:55:12 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,13 +32,18 @@ SRCS_NAMES	= 	main \
 				$(INIT)parse_map_properties \
 				$(INIT)parse_map_tiles \
 				$(INIT)parse_map_floor_ceiling \
+				$(INIT)parse_map_wall1 \
+				$(INIT)parse_map_wall2 \
 				$(HOOKS)keyhooks \
 				$(HOOKS)mousehooks \
 				$(HOOKS)others \
 				$(EXIT)exit \
 				$(EXIT)free \
 				$(UTILS)utils_parse \
-				$(UTILS)utils_general \
+				$(UTILS)utils_general1 \
+				$(UTILS)utils_general2 \
+				$(UTILS)hashtable1 \
+				$(UTILS)hashtable2 \
 
 OS = $(shell uname)
 ifeq ($(OS), Linux)

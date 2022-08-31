@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:03:56 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/19 14:47:41 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/08/31 09:52:26 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_atoi(const char *str);
 int				ft_atoi_e(const char *str, int *err);
+int				ft_atoi_base_e(const char *str, int base, int *err);
 int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t			ft_strlen(const char *str);
