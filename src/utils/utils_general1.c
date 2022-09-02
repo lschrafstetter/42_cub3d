@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 15:36:19 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/02 11:11:33 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	**array_init(int height, int width)
 	if (!int_arr)
 		return (NULL);
 	i = 0;
-	while (i <= height)
+	while (i < height)
 	{
-		int_arr[i] = ft_calloc(width + 1, sizeof(int));
+		int_arr[i] = ft_calloc(width, sizeof(int));
 		if (!int_arr[i])
 		{
 			free_intarray(int_arr);
@@ -31,15 +31,19 @@ int	**array_init(int height, int width)
 		}
 		i++;
 	}
+	int_arr[height] = NULL;
 	return (int_arr);
 }
 
 void	free_intarray(int **int_arr)
 {
-	while (*int_arr)
+	int	i;
+
+	i = 0;
+	while (int_arr[i])
 	{
-		free(*int_arr);
-		int_arr++;
+		free(int_arr[i]);
+		i++;
 	}
 	free(int_arr);
 }

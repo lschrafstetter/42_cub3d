@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:34:18 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 10:11:39 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/02 10:56:05 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	*encode_rgb(__uint8_t red, __uint8_t green, __uint8_t blue)
 int	is_map_line(char *str)
 {
 	if (!ft_strncmp(str, " ", 1))
-		return (1);
-	if (!ft_strncmp(str, "0", 1))
 		return (1);
 	if (!ft_strncmp(str, "1", 1))
 		return (1);

@@ -6,17 +6,24 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:52:48 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 11:03:19 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/02 10:16:01 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	parse_str(t_data *data, char *str)
+static void	close_free_exit(t_data *data, char *str, int fd)
+{
+	close(fd);
+	free(str);
+	error_msg_exit(data, "Wrong input!");
+}
+
+static void	parse_str(t_data *data, char *str, int fd)
 {
 	if (data->map->map_found && (is_no_ea_so_we(str) || \
 			!ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2)))
-		error_msg_exit(data, "Wrong input!");
+		close_free_exit(data, str, fd);
 	if (is_no_ea_so_we(str))
 	{
 		parse_wall_image(data, str);
@@ -37,7 +44,7 @@ static void	parse_str(t_data *data, char *str)
 			data->map->width = ft_strlen(str) - 1;
 		return ;
 	}
-	error_msg_exit(data, "Wrong input!");
+	close_free_exit(data, str, fd);
 }
 
 void	parse_map_properties(t_data *data, char *map_path)
@@ -51,12 +58,9 @@ void	parse_map_properties(t_data *data, char *map_path)
 	str = get_next_line(fd);
 	while (str)
 	{
-		parse_str(data, str);
+		parse_str(data, str, fd);
 		free(str);
 		str = get_next_line(fd);
 	}
 	close(fd);
-	printf("Height: %i Width: %i\n", data->map->heigth, data->map->width);
-	//printf("Colors floor: r: %i, g: %i, b: %i\n", data->map->c_floor->r, data->map->c_floor->g, data->map->c_floor->b);
-	//printf("Colors ceiling: r: %i, g: %i, b: %i\n", data->map->c_ceiling->r, data->map->c_ceiling->g, data->map->c_ceiling->b);
 }

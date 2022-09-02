@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 15:48:40 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/02 10:18:11 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ enum e_tile
 
 typedef struct s_map
 {
-	int				**map;
+	int				**tiles;
 	t_walls			*walls;
 	int				*c_floor;
 	int				*c_ceiling;

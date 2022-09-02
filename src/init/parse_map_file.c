@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:25:26 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 15:46:02 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/02 11:18:03 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_map	*map_init(t_data *data)
 	map->walls->e = NULL;
 	map->walls->s = NULL;
 	map->walls->w = NULL;
-	map->map = NULL;
+	map->tiles = NULL;
 	map->c_ceiling = NULL;
 	map->c_floor = NULL;
 	map->map_found = 0;
@@ -37,8 +37,21 @@ static t_map	*map_init(t_data *data)
 
 void	parse_map_file(t_data *data, char *map_path)
 {
-
 	data->map = map_init(data);
 	parse_map_properties(data, map_path);
-	//parse_map_tiles(data, map_path);
+	parse_map_tiles(data, map_path);
+	int i;
+	int j;
+	i = 0;
+	while (i < data->map->heigth)
+	{
+		j = 0;
+		while (j < data->map->width)
+		{
+			printf("%i", data->map->tiles[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
