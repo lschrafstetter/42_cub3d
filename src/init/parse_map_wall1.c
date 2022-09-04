@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:21:14 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/02 10:08:44 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/04 19:01:10 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static t_image	*parse_wall(t_data *data, char *str)
 	int		fd;
 
 	filename = ft_strtrim(&(str[3]), "\n");
+	if (ft_strncmp(ft_strrchr(filename, '.'), ".xpm", 5))
+		error_msg_exit(data, "Wrong wall image file format");
 	fd = open(filename, O_RDONLY);
 	free(filename);
 	if (fd < 0)
