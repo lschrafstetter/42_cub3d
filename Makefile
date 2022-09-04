@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/31 14:55:12 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/04 18:38:23 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ UTILS		=	utils/
 
 
 SRCS_NAMES	= 	main \
+				$(INIT)check_map_init_player \
 				$(INIT)init \
 				$(INIT)parse_map_file \
 				$(INIT)parse_map_properties \

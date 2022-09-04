@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/02 10:18:11 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/04 18:49:23 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_map
 	int				*c_floor;
 	int				*c_ceiling;
 	int				map_found;
-	int				heigth;
+	int				height;
 	int				width;
 }	t_map;
 
@@ -127,13 +127,17 @@ typedef struct s_data
 
 t_data	*data_init(char *map_path);
 void	parse_map_file(t_data *data, char *map_path);
+
 void	parse_map_properties(t_data *data, char *map_path);
 void	parse_floor_ceiling(t_data *data, char *str);
 void	parse_map_tiles(t_data *data, char *map_path);
+
 void	parse_wall_image(t_data *data, char *str);
 void	wall_parse_properties(t_image *wall, char *line, t_data *data, int fd);
 void	wall_parse_keys(t_image *wall, char *line, t_data *data, int fd);
 void	wall_parse_pixels(t_image *wall, char *line, int fd, int i);
+
+void	check_map_init_player(t_data *data);
 
 //* KEY AND MOUSE EVENTS *//
 
