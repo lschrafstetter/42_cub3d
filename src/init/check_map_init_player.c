@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 18:33:28 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/04 18:56:45 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:34:33 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,7 @@ static void	check_tile_player(t_data *data, int i, int j)
 		error_msg_exit(data, "Player next to void. Don't do that.");
 	if (data->player)
 		error_msg_exit(data, "Multiple players detected");
-	data->player = malloc(sizeof(t_player));
-	if (!(data->player))
-		error_msg_exit(data, "Error mallocing player");
-	data->player->x = j;
-	data->player->y = i;
-	data->player->dir = ((data->map->tiles[i][j] == tile_p_n) * 90 + \
-							(data->map->tiles[i][j] == tile_p_e) * 180 + \
-							(data->map->tiles[i][j] == tile_p_s) * 270);
+	data->player = player_init(data, i, j);
 }
 
 static void	check_tile(t_data *data, int i, int j)

@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/04 18:38:23 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/05 18:28:05 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS_NAMES	= 	main \
 				$(INIT)parse_map_floor_ceiling \
 				$(INIT)parse_map_wall1 \
 				$(INIT)parse_map_wall2 \
+				$(INIT)player_init \
 				$(HOOKS)keyhooks \
 				$(HOOKS)mousehooks \
 				$(HOOKS)others \

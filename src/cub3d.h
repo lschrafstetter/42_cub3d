@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/04 18:49:23 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/05 18:32:14 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@
 # include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 # ifdef __linux__
 // Linux
 enum e_keys
 {
+	KEY_W = 119,
 	KEY_A = 97,
 	KEY_S = 115,
 	KEY_D = 100,
-	KEY_W = 119,
-	KEY_ARROW_UP = 65362,
-	KEY_ARROW_DOWN = 65364,
 	KEY_ARROW_LEFT = 65361,
 	KEY_ARROW_RIGHT = 65363,
 	KEY_ESCAPE = 65307
@@ -105,7 +104,13 @@ typedef struct s_player
 {
 	float	x;
 	float	y;
-	int		dir;
+	float	dir;
+	bool	mov_forward;
+	bool	mov_backward;
+	bool	rot_left;
+	bool	rot_right;
+	bool	strafe_left;
+	bool	strafe_right;
 }	t_player;
 
 typedef struct s_settings
@@ -125,49 +130,51 @@ typedef struct s_data
 
 //* INIT AND PARSING *//
 
-t_data	*data_init(char *map_path);
-void	parse_map_file(t_data *data, char *map_path);
+t_data		*data_init(char *map_path);
+void		parse_map_file(t_data *data, char *map_path);
 
-void	parse_map_properties(t_data *data, char *map_path);
-void	parse_floor_ceiling(t_data *data, char *str);
-void	parse_map_tiles(t_data *data, char *map_path);
+void		parse_map_properties(t_data *data, char *map_path);
+void		parse_floor_ceiling(t_data *data, char *str);
+void		parse_map_tiles(t_data *data, char *map_path);
 
-void	parse_wall_image(t_data *data, char *str);
-void	wall_parse_properties(t_image *wall, char *line, t_data *data, int fd);
-void	wall_parse_keys(t_image *wall, char *line, t_data *data, int fd);
-void	wall_parse_pixels(t_image *wall, char *line, int fd, int i);
+void		parse_wall_image(t_data *data, char *str);
+void		wall_parse_properties(t_image *wall, char *line, \
+									t_data *data, int fd);
+void		wall_parse_keys(t_image *wall, char *line, t_data *data, int fd);
+void		wall_parse_pixels(t_image *wall, char *line, int fd, int i);
 
-void	check_map_init_player(t_data *data);
+void		check_map_init_player(t_data *data);
+t_player	*player_init(t_data *data, int i, int j);
 
 //* KEY AND MOUSE EVENTS *//
 
-int		hook_key_press(int keycode, t_data *data);
-int		hook_key_release(int keycode, t_data *data);
-int		hook_mouse(int x, int y, t_data *data);
-int		hook_exit(t_data *data);
+int			hook_key_press(int keycode, t_data *data);
+int			hook_key_release(int keycode, t_data *data);
+int			hook_mouse(int x, int y, t_data *data);
+int			hook_exit(t_data *data);
 
 //* UTILS PARSING *//
 
-int		is_no_ea_so_we(char *str);
-int		is_map_line(char *str);
-int		*encode_rgb(__uint8_t red, __uint8_t green, __uint8_t blue);
+int			is_no_ea_so_we(char *str);
+int			is_map_line(char *str);
+int			*encode_rgb(__uint8_t red, __uint8_t green, __uint8_t blue);
 
 //* UTILS EXIT *//
 
-void	error_msg_exit(t_data *data, char *str);
-void	error_exit(char *str);
-void	cub_exit(t_data *data, int exit_code);
-void	free_all(t_data *data);
-void	mlx_destroy(t_data *data);
+void		error_msg_exit(t_data *data, char *str);
+void		error_exit(char *str);
+void		cub_exit(t_data *data, int exit_code);
+void		free_all(t_data *data);
+void		mlx_destroy(t_data *data);
 
 //* UTILS GENERAL *//
 
-int		is_hex(char *str);
-int		is_number(char *str);
-void	free_strarray(char **arr);
-int		str_arr_len(char **str_arr);
-void	free_intarray(int **int_arr);
-int		**array_init(int height, int width);
-char	*get_first_n_chars(char *str, int n_chars);
+int			is_hex(char *str);
+int			is_number(char *str);
+void		free_strarray(char **arr);
+int			str_arr_len(char **str_arr);
+void		free_intarray(int **int_arr);
+int			**array_init(int height, int width);
+char		*get_first_n_chars(char *str, int n_chars);
 
 #endif
