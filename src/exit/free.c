@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:45:15 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/02 09:59:45 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:27:49 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	free_map(t_map *map)
 		free(map->c_ceiling);
 	if (map->c_floor)
 		free(map->c_floor);
-	if (map->map)
-		free_intarray(map->map);
+	if (map->tiles)
+		free_intarray(map->tiles);
 	if (map->walls)
 		free_walls(map->walls);
 	free(map);

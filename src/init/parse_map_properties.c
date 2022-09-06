@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_properties.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:52:48 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/02 10:16:01 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:23:44 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	parse_str(t_data *data, char *str, int fd)
 	if (is_map_line(str))
 	{
 		data->map->map_found = 1;
-		data->map->heigth++;
+		data->map->height++;
 		if ((int)(ft_strlen(str) - 1) > data->map->width)
 			data->map->width = ft_strlen(str) - 1;
 		return ;

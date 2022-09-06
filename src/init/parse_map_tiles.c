@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_tiles.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:53:52 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/02 11:18:34 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:24:57 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	parse_map_tiles(t_data *data, char *map_path)
 	int		fd;
 	int		i;
 
-	data->map->tiles = array_init(data->map->heigth, data->map->width);
+	data->map->tiles = array_init(data->map->height, data->map->width);
 	if (!(data->map->tiles))
 		error_msg_exit(data, "Error mallocing tiles struct!");
 	fd = open(map_path, O_RDONLY);

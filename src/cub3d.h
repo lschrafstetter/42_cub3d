@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/05 18:32:14 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:28:48 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ enum e_keys
 	KEY_S = 1,
 	KEY_D = 2,
 	KEY_W = 13,
-	KEY_ESCAPE = 53
+	KEY_ESCAPE = 53,
+	KEY_ARROW_LEFT = 123,
+	KEY_ARROW_RIGHT = 124,
 };
 # endif
 
