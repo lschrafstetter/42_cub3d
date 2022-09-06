@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:58:57 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/05 18:33:51 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:20:39 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int	hook_key_press(int keycode, t_data *data)
 int	hook_key_release(int keycode, t_data *data)
 {
 	printf("Released key: %i!\n", keycode);
-	if (keycode == KEY_ESCAPE)
-		cub_exit(data, 0);
-	else
-		handle_key(keycode, data, false);
+	handle_key(keycode, data, false);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:24:29 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/05 18:26:44 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 09:18:34 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_player	*player_init(t_data *data, int i, int j)
 		error_msg_exit(data, "Error mallocing player");
 	player->x = j;
 	player->y = i;
+	player->dir = 0;
 	player->dir = ((data->map->tiles[i][j] == tile_p_n) * 90 + \
 							(data->map->tiles[i][j] == tile_p_e) * 180 + \
 							(data->map->tiles[i][j] == tile_p_s) * 270);
