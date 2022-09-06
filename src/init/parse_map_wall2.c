@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:55:46 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/04 19:18:29 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:12:03 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	close_free_exit_2(t_data *data, char *line, char *helper, int fd)
 	error_msg_exit(data, "Error parsing wall image properties");
 }
 
-void	wall_parse_properties(t_image *wall, char *line, t_data *data, int fd)
+void	wall_parse_properties(t_wall *wall, char *line, t_data *data, int fd)
 {
 	char	*helper;
 	char	**str_arr;
@@ -57,7 +57,7 @@ void	wall_parse_properties(t_image *wall, char *line, t_data *data, int fd)
 	free_strarray(str_arr);
 }
 
-void	wall_parse_keys(t_image *wall, char *line, t_data *data, int fd)
+void	wall_parse_keys(t_wall *wall, char *line, t_data *data, int fd)
 {
 	char	*helper1;
 	char	*helper2;
@@ -82,7 +82,7 @@ void	wall_parse_keys(t_image *wall, char *line, t_data *data, int fd)
 	free(helper2);
 }
 
-void	wall_parse_pixels(t_image *wall, char *line, int fd, int i)
+void	wall_parse_pixels(t_wall *wall, char *line, int fd, int i)
 {
 	char	*helper1;
 	char	*helper2;

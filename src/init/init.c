@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:27:49 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/04 18:32:58 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:27:00 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ static void	init_null(t_data *data)
 	data->player = NULL;
 	data->mlx = NULL;
 	data->win = NULL;
-	data->settings = NULL;
+	data->math = math_init();
+	if (!(data->math))
+		error_msg_exit(data, "Error mallocing math struct");
 }
 
 t_data	*data_init(char *map_path)
@@ -32,6 +34,6 @@ t_data	*data_init(char *map_path)
 	parse_map_file(data, map_path);
 	check_map_init_player(data);
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, 1024, 1024, "cub3d");
+	data->win = mlx_new_window(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3d");
 	return (data);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:45:15 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 09:27:49 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/06 15:27:51 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	free_image(t_image *image)
+static void	free_wall(t_wall *image)
 {
 	if (image->hashtable)
 		hashtable_delete(image->hashtable);
@@ -25,13 +25,13 @@ static void	free_image(t_image *image)
 static void	free_walls(t_walls *walls)
 {
 	if (walls->n)
-		free_image(walls->n);
+		free_wall(walls->n);
 	if (walls->e)
-		free_image(walls->e);
+		free_wall(walls->e);
 	if (walls->s)
-		free_image(walls->s);
+		free_wall(walls->s);
 	if (walls->w)
-		free_image(walls->w);
+		free_wall(walls->w);
 	free(walls);
 	walls = NULL;
 }
@@ -54,10 +54,10 @@ void	free_all(t_data *data)
 {
 	if (data->map)
 		free_map(data->map);
-	if (data->settings)
-		free(data->settings);
 	if (data->player)
 		free(data->player);
+	if (data->math)
+		math_free(data->math);
 	mlx_destroy(data);
 	free(data);
 	data = NULL;

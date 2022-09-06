@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:21:14 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/04 19:01:10 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/06 15:11:30 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	close_free_exit(char *line, t_data *data, int fd)
 	error_msg_exit(data, "Error parsing wall image properties");
 }
 
-static void	parse_file(t_data *data, t_image *wall, int fd)
+static void	parse_file(t_data *data, t_wall *wall, int fd)
 {
 	char	*line;
 	int		i;
@@ -47,11 +47,11 @@ static void	parse_file(t_data *data, t_image *wall, int fd)
 	}
 }
 
-static t_image	*wall_init(t_data *data, int fd)
+static t_wall	*wall_init(t_data *data, int fd)
 {
-	t_image	*wall;
+	t_wall	*wall;
 
-	wall = ft_calloc(sizeof(t_image), 1);
+	wall = ft_calloc(sizeof(t_wall), 1);
 	if (!wall)
 	{
 		close(fd);
@@ -63,9 +63,9 @@ static t_image	*wall_init(t_data *data, int fd)
 	return (wall);
 }
 
-static t_image	*parse_wall(t_data *data, char *str)
+static t_wall	*parse_wall(t_data *data, char *str)
 {
-	t_image	*wall;
+	t_wall	*wall;
 	char	*filename;
 	int		fd;
 

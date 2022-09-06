@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/05 18:28:05 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/06 16:04:24 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,20 @@ MYLIBS 		= libft/libft.a
 LIBS 		= -lm
 
 SRCS_PATH 	= 	./src/
-INIT		=	init/
-HOOKS		=	hooks/
-RAYCAST		=	raycast/
 EXIT		= 	exit/
+HOOKS		=	hooks/
+INIT		=	init/
+MOVE 		=	move/
+RENDER		=	render/
 UTILS		=	utils/
 
 
 SRCS_NAMES	= 	main \
+				$(EXIT)exit \
+				$(EXIT)free \
+				$(HOOKS)keyhooks \
+				$(HOOKS)mousehooks \
+				$(HOOKS)others \
 				$(INIT)check_map_init_player \
 				$(INIT)init \
 				$(INIT)parse_map_file \
@@ -36,16 +42,20 @@ SRCS_NAMES	= 	main \
 				$(INIT)parse_map_wall1 \
 				$(INIT)parse_map_wall2 \
 				$(INIT)player_init \
-				$(HOOKS)keyhooks \
-				$(HOOKS)mousehooks \
-				$(HOOKS)others \
-				$(EXIT)exit \
-				$(EXIT)free \
+				$(MOVE)move \
+				$(MOVE)translate_diagonal \
+				$(MOVE)translate_parallel \
+				$(MOVE)translate \
+				$(RENDER)render_minimap \
+				$(RENDER)render_scene \
+				$(UTILS)delay \
+				$(UTILS)hashtable1 \
+				$(UTILS)hashtable2 \
+				$(UTILS)math \
 				$(UTILS)utils_parse \
 				$(UTILS)utils_general1 \
 				$(UTILS)utils_general2 \
-				$(UTILS)hashtable1 \
-				$(UTILS)hashtable2 \
+				$(UTILS)utils_rendering \
 
 OS = $(shell uname)
 ifeq ($(OS), Linux)
@@ -61,7 +71,7 @@ OBJS_PATH	= 	./obj/
 OBJS_NAMES	= 	$(SRCS_NAMES:%=%.o)
 OBJS		= 	$(addprefix $(OBJS_PATH), $(OBJS_NAMES))
 
-ALL_DIRS	= 	$(INIT) $(HOOKS) $(RAYCAST) $(EXIT) $(UTILS)
+ALL_DIRS	= 	$(EXIT) $(HOOKS) $(INIT) $(MOVE) $(RENDER) $(UTILS)
 DIRS_PATHS	=	$(addprefix $(OBJS_PATH), $(ALL_DIRS))
 
 all: $(NAME)
