@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 15:58:23 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/08 13:11:40 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define MOV_STEP 1 / FRAMERATE
 # define ROT_STEP 45 / FRAMERATE
 
-# define SCREEN_HEIGHT 1024
+# define SCREEN_HEIGHT 768
 # define SCREEN_WIDTH 1024
 
 # ifdef __linux__
