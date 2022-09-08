@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:58:57 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 10:57:43 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/08 10:22:47 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

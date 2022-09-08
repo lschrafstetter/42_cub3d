@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:41:44 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 14:50:10 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/08 10:46:46 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ static void	translate_backward(t_data *data)
 static void	translate_right(t_data *data)
 {
 	if (data->player->dir_int > 0 && data->player->dir_int < 90)
-		translate_diagonal_q2(data);
-	else if (data->player->dir_int > 90 && data->player->dir_int < 180)
-		translate_diagonal_q3(data);
-	else if (data->player->dir_int > 180 && data->player->dir_int < 270)
 		translate_diagonal_q4(data);
-	else if (data->player->dir_int > 270)
+	else if (data->player->dir_int > 90 && data->player->dir_int < 180)
 		translate_diagonal_q1(data);
+	else if (data->player->dir_int > 180 && data->player->dir_int < 270)
+		translate_diagonal_q2(data);
+	else if (data->player->dir_int > 270)
+		translate_diagonal_q3(data);
 	else if (data->player->dir_int == 0)
 		translate_parallel_y_pos(data, MOV_STEP);
 	else if (data->player->dir_int == 90)
@@ -75,13 +75,13 @@ static void	translate_right(t_data *data)
 static void	translate_left(t_data *data)
 {
 	if (data->player->dir_int > 0 && data->player->dir_int < 90)
-		translate_diagonal_q4(data);
-	else if (data->player->dir_int > 90 && data->player->dir_int < 180)
-		translate_diagonal_q1(data);
-	else if (data->player->dir_int > 180 && data->player->dir_int < 270)
 		translate_diagonal_q2(data);
-	else if (data->player->dir_int > 270)
+	else if (data->player->dir_int > 90 && data->player->dir_int < 180)
 		translate_diagonal_q3(data);
+	else if (data->player->dir_int > 180 && data->player->dir_int < 270)
+		translate_diagonal_q4(data);
+	else if (data->player->dir_int > 270)
+		translate_diagonal_q1(data);
 	else if (data->player->dir_int == 0)
 		translate_parallel_y_neg(data, MOV_STEP);
 	else if (data->player->dir_int == 90)
