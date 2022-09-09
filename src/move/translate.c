@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:41:44 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/08 10:46:46 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/09 11:55:59 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	translate_left(t_data *data)
 		translate_parallel_x_pos(data, MOV_STEP);
 }
 
-void translate(t_data *data)
+void	translate(t_data *data)
 {
 	if (data->player->mov_forward && !(data->player->mov_backward))
 		translate_forward(data);

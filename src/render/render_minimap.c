@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:57:42 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/08 13:54:42 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/09 11:56:36 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	color_select(t_data *data, int i, int j)
 		return (0x0);
 	else if (data->map->tiles[i][j] == tile_door)
 		return (0x00FF00);
+	else if (data->map->tiles[i][j] == tile_door_open)
+		return (0x0000FF);
 	else
 		return (0xd3d3d3);
 }
@@ -39,7 +41,7 @@ static void	draw_map(t_data *data, t_image *image, int *indexes)
 {
 	int		target_x;
 	int		target_y;
-	
+
 	target_y = 10 * (data->player->y) + 100;
 	target_x = 10 * (data->player->x) + 100;
 	indexes[0] = 10 * (data->player->y) - 100;
@@ -56,7 +58,6 @@ static void	draw_map(t_data *data, t_image *image, int *indexes)
 			indexes[1]++;
 			indexes[3]++;
 		}
-		//sleep(1);
 		indexes[0]++;
 		indexes[2]++;
 	}
@@ -88,7 +89,7 @@ void	render_minimap(t_data *data, t_image *image)
 	indexes = malloc(sizeof(int) * 4);
 	if (!indexes)
 	{
-		free(image);///////////
+		free(image);//
 		error_msg_exit(data, "Error mallocing int array");
 	}
 	draw_map(data, image, indexes);

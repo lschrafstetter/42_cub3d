@@ -6,11 +6,21 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 13:22:47 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 14:26:28 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 12:09:13 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+float	get_dir_x(float dir)
+{
+	return (cos(dir / 180 * M_PI));
+}
+
+float	get_dir_y(float dir)
+{
+	return (sin(dir / 180 * M_PI));
+}
 
 void	math_free(t_math *math)
 {
@@ -31,7 +41,7 @@ t_math	*math_init(void)
 
 	math = malloc(sizeof(t_math));
 	if (!math)
-		return(NULL);
+		return (NULL);
 	math->sin = malloc(sizeof(double) * 360);
 	math->cos = malloc(sizeof(double) * 360);
 	math->tan = malloc(sizeof(double) * 360);

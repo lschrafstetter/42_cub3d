@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/06 16:04:24 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/09 10:21:57 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,9 @@ SRCS_NAMES	= 	main \
 				$(MOVE)translate_diagonal \
 				$(MOVE)translate_parallel \
 				$(MOVE)translate \
+				$(RENDER)raycast \
 				$(RENDER)render_minimap \
+				$(RENDER)render_pov \
 				$(RENDER)render_scene \
 				$(UTILS)delay \
 				$(UTILS)hashtable1 \

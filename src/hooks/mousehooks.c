@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mousehooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 13:32:07 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/08 14:04:33 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/08 14:18:14 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

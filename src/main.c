@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/08 14:06:55 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/09 13:21:28 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	render_next_frame(t_data *data)
 	move(data);
 	render_scene(data);
 	delay(false, DELAY);
-	printf("Player dir: %.2f dir_int: %i\n", data->player->dir, data->player->dir_int);
-	printf("Player pos: (%.3f|%.3f)\n", data->player->x, data->player->y);
+	//printf("Player dir: %.2f dir_int: %i  vector(x|y): (%.2f|%.2f)\n", data->player->dir, data->player->dir_int, data->player->dir_x, data->player->dir_y);
+	//printf("Player pos: (%.3f|%.3f)\n", data->player->x, data->player->y);
 	return (0);
 }
 
@@ -33,9 +33,8 @@ int	main(int argc, char **argv)
 	data = data_init(argv[1]);
 	mlx_hook(data->win, 2, 1L << 0, hook_key_press, data);
 	mlx_hook(data->win, 3, 1L << 1, hook_key_release, data);
-	mlx_hook(data->win, 6, 1L << 6, hook_mouse, data);
+	//mlx_hook(data->win, 6, 1L << 6, hook_mouse, data);
 	mlx_hook(data->win, 17, 0, hook_exit, data);
 	mlx_loop_hook(data->mlx, render_next_frame, data);
-	mlx_mouse_hide();
 	mlx_loop(data->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/08 13:11:40 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/09 12:57:31 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@
 # include <fcntl.h>
 # include <stdbool.h>
 # include <sys/time.h>
+# include <limits.h>
 
-# define FRAMERATE 30.0
-# define DELAY 1000000 / FRAMERATE
-# define MOV_STEP 1 / FRAMERATE
-# define ROT_STEP 45 / FRAMERATE
+# define DELAY 33333
+# define MOV_STEP 0.033f
+# define ROT_STEP 1.5f
 
 # define SCREEN_HEIGHT 768
 # define SCREEN_WIDTH 1024
+# define FOV_DEG 90.0f
 
 # ifdef __linux__
 // Linux
@@ -101,14 +102,15 @@ typedef struct s_walls
 
 enum e_tile
 {
-	tile_empty = 0,
-	tile_floor = 1,
-	tile_wall = 2,
-	tile_door = 3,
-	tile_p_n = 4,
-	tile_p_e = 5,
-	tile_p_s = 6,
-	tile_p_w = 7
+	tile_empty,
+	tile_floor,
+	tile_wall,
+	tile_door,
+	tile_door_open,
+	tile_p_n,
+	tile_p_e,
+	tile_p_s,
+	tile_p_w
 };
 
 typedef struct s_map
@@ -152,6 +154,24 @@ typedef struct s_data
 	void		*win;
 }	t_data;
 
+typedef struct s_raycast_h
+{
+	int		map_x;
+	int		map_y;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+}	t_raycast_h;
+
 //* INIT AND PARSING *//
 
 t_data		*data_init(char *map_path);
@@ -194,6 +214,8 @@ void		translate_diagonal_q4(t_data *data);
 
 void		render_scene(t_data *data);
 void		render_minimap(t_data *data, t_image *image);
+void		render_pov(t_data *data, t_image *image);
+void		ray_cast(t_data *data, t_image *image, int ray_n);
 
 //* UTILS PARSING *//
 
@@ -218,6 +240,8 @@ void		mlx_destroy(t_data *data);
 
 t_math		*math_init(void);
 void		math_free(t_math *math);
+float		get_dir_x(float dir);
+float		get_dir_y(float dir);
 
 //* UTILS GENERAL *//
 
