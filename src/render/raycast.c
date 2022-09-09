@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:20:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 13:53:34 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:38:26 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	perform_dda(t_data *data, t_raycast_h *h)
 			h->map_y += h->step_y;
 			h->side = 1;
 		}
-		if (data->map->tiles[h->map_y][h->map_x] == tile_wall)
+		if (is_wall_door_closed(data->map->tiles[h->map_y][h->map_x]))
 		{
 			h->hit = 1;
 		}
@@ -62,16 +62,16 @@ static void	get_step_and_initial_dist(t_data *data, t_raycast_h *h)
 static void	ray_init(t_data *data, t_raycast_h *h, int ray_n)
 {
 	h->camera_x = 2 * ray_n / (double)SCREEN_WIDTH - 1;
-	h->ray_dir_x = 
-	h->ray_dir_y = 
+	h->ray_dir_x = data->player->dir_x + data->player->plane_x * h->camera_x;
+	h->ray_dir_y = data->player->dir_y + data->player->plane_y * h->camera_x;
 	h->map_x = data->player->x;
 	h->map_y = data->player->y;
 	if (h->ray_dir_x == 0)
-		h->delta_dist_x = INT_MAX;
+		h->delta_dist_x = 10000;
 	else
 		h->delta_dist_x = fabs(1 / h->ray_dir_x);
 	if (h->ray_dir_y == 0)
-		h->delta_dist_y = INT_MAX;
+		h->delta_dist_y = 10000;
 	else
 		h->delta_dist_y = fabs(1 / h->ray_dir_y);
 	h->hit = 0;
@@ -92,8 +92,6 @@ void	ray_cast(t_data *data, t_image *image, int ray_n)
 	ray_init(data, h, ray_n);
 	get_step_and_initial_dist(data, h);
 	perform_dda(data, h);
-	// printf("Casting ray n: %i dirx: %f diry: %f\n", ray_n, h->ray_dir_x, h->ray_dir_y);
-	// printf("Hit wall: (%i|%i) Tile: %i\n", h->map_x, h->map_y, data->map->tiles[h->map_x][h->map_y]);
-	// usleep(10000);
+	draw(data, image, h, ray_n);
 	free(h);
 }

@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:21:14 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 15:11:30 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 17:06:32 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static t_wall	*wall_init(t_data *data, int fd)
 	wall->hashtable = NULL;
 	wall->pixels = NULL;
 	wall->data = data;
+	wall->width = 0;
+	wall->height = 0;
 	return (wall);
 }
 

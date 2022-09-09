@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 14:55:42 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 15:57:05 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,9 @@ int	is_number(char *str)
 		str++;
 	}
 	return (1);
+}
+
+int	is_wall_door_closed(int tile)
+{
+	return (tile == tile_wall || tile == tile_door);
 }

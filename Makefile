@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/09 10:21:57 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/09 16:05:19 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,8 @@ SRCS_NAMES	= 	main \
 				$(INIT)parse_map_wall2 \
 				$(INIT)player_init \
 				$(MOVE)move \
-				$(MOVE)translate_diagonal \
-				$(MOVE)translate_parallel \
 				$(MOVE)translate \
+				$(RENDER)draw \
 				$(RENDER)raycast \
 				$(RENDER)render_minimap \
 				$(RENDER)render_pov \

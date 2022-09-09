@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 14:37:12 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 16:53:38 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # include <limits.h>
 
 # define DELAY 33333
-# define MOV_STEP 0.033f
-# define ROT_STEP 1.5f
+# define MOV_STEP 0.066f
+# define ROT_STEP 0.15705f
 
 # define SCREEN_HEIGHT 768
 # define SCREEN_WIDTH 1024
@@ -98,6 +98,7 @@ typedef struct s_walls
 	t_wall	*e;
 	t_wall	*s;
 	t_wall	*w;
+	t_wall	*door;
 }	t_walls;
 
 enum e_tile
@@ -172,6 +173,12 @@ typedef struct s_raycast_h
 	int		step_y;
 	int		hit;
 	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	double	wall_x;
+	int		image_x;
+	t_wall	*wall;
 }	t_raycast_h;
 
 //* INIT AND PARSING *//
@@ -202,15 +209,10 @@ int			hook_exit(t_data *data);
 //* NAVIGATION *//
 
 void		move(t_data *data);
-void		translate(t_data *data);
-void		translate_parallel_x_pos(t_data *data, float distance);
-void		translate_parallel_x_neg(t_data *data, float distance);
-void		translate_parallel_y_pos(t_data *data, float distance);
-void		translate_parallel_y_neg(t_data *data, float distance);
-void		translate_diagonal_q1(t_data *data);
-void		translate_diagonal_q2(t_data *data);
-void		translate_diagonal_q3(t_data *data);
-void		translate_diagonal_q4(t_data *data);
+void		translate_forward(t_data *data, t_player *p);
+void		translate_backward(t_data *data, t_player *p);
+void		translate_left(t_data *data, t_player *p);
+void		translate_right(t_data *data, t_player *p);
 
 //* RENDERING *//
 
@@ -218,6 +220,7 @@ void		render_scene(t_data *data);
 void		render_minimap(t_data *data, t_image *image);
 void		render_pov(t_data *data, t_image *image);
 void		ray_cast(t_data *data, t_image *image, int ray_n);
+void		draw(t_data *data, t_image *image, t_raycast_h *helper, int ray_n);
 
 //* UTILS PARSING *//
 
@@ -255,5 +258,6 @@ void		free_intarray(int **int_arr);
 int			**array_init(int height, int width);
 char		*get_first_n_chars(char *str, int n_chars);
 void		delay(bool start, unsigned long time);
+int			is_wall_door_closed(int tile);
 
 #endif
