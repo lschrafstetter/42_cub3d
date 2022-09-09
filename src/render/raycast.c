@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:20:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 13:28:52 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:53:34 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static void	get_step_and_initial_dist(t_data *data, t_raycast_h *h)
 static void	ray_init(t_data *data, t_raycast_h *h, int ray_n)
 {
 	h->camera_x = 2 * ray_n / (double)SCREEN_WIDTH - 1;
-	h->ray_dir_x = get_dir_x(FOV_DEG / 2 + ray_n * (FOV_DEG / SCREEN_WIDTH));
-	h->ray_dir_y = -get_dir_y(FOV_DEG / 2 + ray_n * (FOV_DEG / SCREEN_WIDTH));
+	h->ray_dir_x = 
+	h->ray_dir_y = 
 	h->map_x = data->player->x;
 	h->map_y = data->player->y;
 	if (h->ray_dir_x == 0)
@@ -88,12 +88,12 @@ void	ray_cast(t_data *data, t_image *image, int ray_n)
 		free(image); //
 		error_msg_exit(data, "Error mallocing raycast helper");
 	}
-	(void) ray_n;
+	(void)ray_n;
 	ray_init(data, h, ray_n);
 	get_step_and_initial_dist(data, h);
 	perform_dda(data, h);
-	//printf("Casting ray n: %i dirx: %f diry: %f\n", ray_n, h->ray_dir_x, h->ray_dir_y);
-	//printf("Hit wall: (%i|%i) Tile: %i\n", h->map_x, h->map_y, data->map->tiles[h->map_x][h->map_y]);
-	//usleep(10000);
+	// printf("Casting ray n: %i dirx: %f diry: %f\n", ray_n, h->ray_dir_x, h->ray_dir_y);
+	// printf("Hit wall: (%i|%i) Tile: %i\n", h->map_x, h->map_y, data->map->tiles[h->map_x][h->map_y]);
+	// usleep(10000);
 	free(h);
 }

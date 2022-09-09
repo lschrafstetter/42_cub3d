@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 13:21:28 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:39:40 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	render_next_frame(t_data *data)
 	move(data);
 	render_scene(data);
 	delay(false, DELAY);
-	//printf("Player dir: %.2f dir_int: %i  vector(x|y): (%.2f|%.2f)\n", data->player->dir, data->player->dir_int, data->player->dir_x, data->player->dir_y);
-	//printf("Player pos: (%.3f|%.3f)\n", data->player->x, data->player->y);
+	printf("vector(x|y): (%.2f|%.2f)\n", data->player->dir_x, data->player->dir_y);
+	printf("Player pos: (%.3f|%.3f)\n", data->player->x, data->player->y);
 	return (0);
 }
 

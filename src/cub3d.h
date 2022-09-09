@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 12:57:31 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:37:12 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,12 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
-	float	dir;
-	int		dir_int;
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	bool	mov_forward;
 	bool	mov_backward;
 	bool	rot_left;

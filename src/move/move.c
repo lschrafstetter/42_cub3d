@@ -6,26 +6,38 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 10:50:09 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 12:22:18 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/09 14:37:23 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	rotate(t_data *data)
+static void	rotate(t_player *p)
 {
-	if (data->player->rot_left)
-		data->player->dir += ROT_STEP;
-	if (data->player->rot_right)
-		data->player->dir -= ROT_STEP;
-	if (data->player->dir >= 0)
-		data->player->dir_int = (int)(data->player->dir) % 360;
-	else
-		data->player->dir_int = 360 + ((int)(data->player->dir) % 360);
+	double	old_dir_x;
+	double	old_plane_x;
+
+	old_dir_x = p->dir_x;
+	old_plane_x = p->plane_x;
+	if (p->rot_left)
+	{
+		p->dir_x = p->dir_x * cos(ROT_STEP) - p->dir_y * sin(ROT_STEP);
+		p->dir_y = old_dir_x * sin(ROT_STEP) + p->dir_y * cos(ROT_STEP);
+		p->plane_x = p->plane_x * cos(ROT_STEP) - p->plane_y * sin(ROT_STEP);
+		p->plane_y = old_plane_x * sin(ROT_STEP) + p->plane_y * cos(ROT_STEP);
+	}
+	if (p->rot_right)
+	{
+		p->dir_x = p->dir_x * cos(-ROT_STEP) - p->dir_y * sin(-ROT_STEP);
+		p->dir_y = old_dir_x * sin(-ROT_STEP) + p->dir_y * cos(-ROT_STEP);
+		p->plane_x = p->plane_x * cos(-ROT_STEP) - p->plane_y * sin(-ROT_STEP);
+		p->plane_y = old_plane_x * sin(-ROT_STEP) + \
+						p->plane_y * cos(-ROT_STEP);
+	}
 }
 
 void	move(t_data *data)
 {
-	rotate(data);
+	rotate(data->player);
 	translate(data);
 }
