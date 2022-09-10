@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:21:14 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 17:06:32 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:36:12 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,13 @@ static t_wall	*parse_wall(t_data *data, char *str)
 
 void	parse_wall_image(t_data *data, char *str)
 {
-	if (!ft_strncmp(str, "NO ", 3))
+	if (!ft_strncmp(str, "DO ", 3))
+	{
+		if (data->map->walls->door)
+			error_msg_exit(data, "'NO' wall already exists!");
+		data->map->walls->door = parse_wall(data, str);
+	}
+	else if (!ft_strncmp(str, "NO ", 3))
 	{
 		if (data->map->walls->n)
 			error_msg_exit(data, "'NO' wall already exists!");

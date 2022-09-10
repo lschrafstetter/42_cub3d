@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:25:26 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/04 18:55:30 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:34:37 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_map	*map_init(t_data *data)
 	map->walls->e = NULL;
 	map->walls->s = NULL;
 	map->walls->w = NULL;
+	map->walls->door = NULL;
 	map->tiles = NULL;
 	map->c_ceiling = NULL;
 	map->c_floor = NULL;

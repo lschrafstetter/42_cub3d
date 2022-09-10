@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 08:56:08 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/10 09:55:03 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	render_next_frame(t_data *data)
 {
-	delay(true, DELAY);
+	//delay(true, DELAY);
 	move(data);
 	render_scene(data);
-	delay(false, DELAY);
+	//delay(false, DELAY);
 	//printf("vector(x|y): (%.2f|%.2f)\n", data->player->dir_x, data->player->dir_y);
 	//printf("Player pos: (%.3f|%.3f)\n", data->player->x, data->player->y);
 	return (0);

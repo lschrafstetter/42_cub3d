@@ -1,7 +1,8 @@
 NO ./maps/assets/bark.xpm
-SO ./maps/assets/door.xpm
+SO ./maps/assets/grass.xpm
 WE ./maps/assets/bookshelf.xpm
-EA ./maps/assets/grass.xpm
+EA ./maps/assets/planks.xpm
+DO ./maps/assets/door.xpm
 
 F 190,200,195
 C 37,180,104
@@ -10,7 +11,7 @@ C 37,180,104
 100000000000000000001
 100000000000000000001
 100000000111000000001
-100000000101000000001
+100000000D01000000001
 100000000111000000001
 10N000000000000000001
 100000000000000000011

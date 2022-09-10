@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 16:53:38 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:48:03 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 enum e_keys
 {
 	KEY_W = 119,
+	KEY_E = 101,
 	KEY_A = 97,
 	KEY_S = 115,
 	KEY_D = 100,
@@ -53,10 +54,11 @@ enum e_keys
 // Mac
 enum e_keys
 {
+	KEY_W = 13,
+	KEY_E = 14,
 	KEY_A = 0,
 	KEY_S = 1,
 	KEY_D = 2,
-	KEY_W = 13,
 	KEY_ESCAPE = 53,
 	KEY_ARROW_LEFT = 123,
 	KEY_ARROW_RIGHT = 124,
@@ -205,6 +207,7 @@ int			hook_key_press(int keycode, t_data *data);
 int			hook_key_release(int keycode, t_data *data);
 int			hook_mouse(int x, int y, t_data *data);
 int			hook_exit(t_data *data);
+void		open_door(t_data *data);
 
 //* NAVIGATION *//
 
@@ -224,7 +227,7 @@ void		draw(t_data *data, t_image *image, t_raycast_h *helper, int ray_n);
 
 //* UTILS PARSING *//
 
-int			is_no_ea_so_we(char *str);
+int			is_no_ea_so_we_do(char *str);
 int			is_map_line(char *str);
 int			*encode_rgb(__uint8_t red, __uint8_t green, __uint8_t blue);
 

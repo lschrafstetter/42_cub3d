@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:34:18 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/02 10:56:05 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:39:10 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_map_line(char *str)
 	return (0);
 }
 
-int	is_no_ea_so_we(char *str)
+int	is_no_ea_so_we_do(char *str)
 {
 	if (!ft_strncmp(str, "NO ", 3))
 		return (1);
@@ -43,6 +43,8 @@ int	is_no_ea_so_we(char *str)
 	if (!ft_strncmp(str, "SO ", 3))
 		return (1);
 	if (!ft_strncmp(str, "WE ", 3))
+		return (1);
+	if (!ft_strncmp(str, "DO ", 3))
 		return (1);
 	return (0);
 }

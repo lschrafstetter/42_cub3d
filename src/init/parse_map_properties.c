@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_properties.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:52:48 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 09:23:44 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/10 09:39:30 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	close_free_exit(t_data *data, char *str, int fd)
 
 static void	parse_str(t_data *data, char *str, int fd)
 {
-	if (data->map->map_found && (is_no_ea_so_we(str) || \
+	if (data->map->map_found && (is_no_ea_so_we_do(str) || \
 			!ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2)))
 		close_free_exit(data, str, fd);
-	if (is_no_ea_so_we(str))
+	if (is_no_ea_so_we_do(str))
 	{
 		parse_wall_image(data, str);
 		return ;

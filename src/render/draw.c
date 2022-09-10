@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:04:41 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 09:01:13 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/10 09:23:14 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	draw_wall(t_image *image, t_raycast_h *h, int ray_n)
+static void	draw_wall(t_data *data, t_image *image, t_raycast_h *h, int ray_n)
 {
 	double	step;
 	double	image_pos;
 	int		i;
-	int		color;
 	int		image_y;
 
 	/*printf("Ray_n: %i Startdraw: %i Enddraw: %i\n", ray_n, h->draw_start, h->draw_end);
@@ -26,13 +25,28 @@ static void	draw_wall(t_image *image, t_raycast_h *h, int ray_n)
 	usleep(100000);*/
 	step = (double)(h->wall->height) / (double)(h->line_height);
 	image_pos = (h->draw_start - SCREEN_HEIGHT / 2 + h->line_height / 2) * step;
-	i = h->draw_start;
+	/*i = h->draw_start;
 	while (i < h->draw_end)
 	{
-		image_y = (int)image_pos & (h->wall->height - 1);
+		image_y = (int)image_pos;// & (h->wall->height - 1);
 		image_pos += step;
 		color = h->wall->pixels[image_y][h->image_x];
 		image_pix_put(image, ray_n, i, color);
+		i++;
+	}*/
+	i = 0;
+	while (i < SCREEN_HEIGHT)
+	{
+		if (i < h->draw_start)
+			image_pix_put(image, ray_n, i, *(data->map->c_ceiling));
+		else if (i < h->draw_end)
+		{
+			image_y = (int)image_pos;// & (h->wall->height - 1);
+			image_pos += step;
+			image_pix_put(image, ray_n, i, h->wall->pixels[image_y][h->image_x]);
+		}
+		else
+			image_pix_put(image, ray_n, i, *(data->map->c_floor));
 		i++;
 	}
 }
@@ -85,5 +99,5 @@ void	draw(t_data *data, t_image *image, t_raycast_h *helper, int ray_n)
 	calculate_draw_parameters(data, helper);
 	helper->wall = decide_wall(data, helper);
 	calculate_image_parameters(helper);
-	draw_wall(image, helper, ray_n);
+	draw_wall(data, image, helper, ray_n);
 }

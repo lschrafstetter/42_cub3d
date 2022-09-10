@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:58:57 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 11:57:08 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 09:28:28 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ static void	handle_key(int keycode, t_data *data, bool pressed)
 
 int	hook_key_press(int keycode, t_data *data)
 {
-	if (keycode == KEY_ESCAPE)
-		;//cub_exit(data, 0);
-	else
-		handle_key(keycode, data, true);
+	handle_key(keycode, data, true);
 	return (0);
 }
 
 int	hook_key_release(int keycode, t_data *data)
 {
+	if (keycode == KEY_ESCAPE)
+		cub_exit(data, 0);
+	if (keycode == KEY_E)
+		open_door(data);
 	handle_key(keycode, data, false);
 	return (0);
 }

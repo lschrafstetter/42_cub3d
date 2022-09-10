@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/09 16:05:19 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/10 09:33:03 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_NAMES	= 	main \
 				$(EXIT)free \
 				$(HOOKS)keyhooks \
 				$(HOOKS)mousehooks \
+				$(HOOKS)open_door \
 				$(HOOKS)others \
 				$(INIT)check_map_init_player \
 				$(INIT)init \
