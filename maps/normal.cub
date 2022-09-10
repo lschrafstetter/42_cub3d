@@ -1,8 +1,8 @@
-NO ./maps/assets/bark.xpm
-SO ./maps/assets/grass.xpm
-WE ./maps/assets/bookshelf.xpm
-EA ./maps/assets/planks.xpm
-DO ./maps/assets/grass.xpm
+NO ./maps/normal_assets/bark.xpm
+SO ./maps/normal_assets/grass.xpm
+WE ./maps/normal_assets/bookshelf.xpm
+EA ./maps/normal_assets/planks.xpm
+DO ./maps/normal_assets/door.xpm
 
 F 190,200,195
 C 37,180,104
