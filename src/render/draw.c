@@ -6,7 +6,7 @@
 /*   By: dfranke <dfranke@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:04:41 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 08:44:04 by dfranke          ###   ########.fr       */
+/*   Updated: 2022/09/10 09:01:13 by dfranke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static t_wall	*decide_wall(t_data *data, t_raycast_h *h)
 
 static void	calculate_draw_parameters(t_data *data, t_raycast_h *h)
 {
-	if (h->side)
-		h->perp_wall_dist = h->side_dist_y - h->delta_dist_y;
-	else
+	if (!h->side)
 		h->perp_wall_dist = h->side_dist_x - h->delta_dist_x;
+	else
+		h->perp_wall_dist = h->side_dist_y - h->delta_dist_y;
 	h->line_height = (int)(SCREEN_HEIGHT / h->perp_wall_dist);
 	h->draw_start = -(h->line_height) / 2 + SCREEN_HEIGHT / 2;
 	if (h->draw_start < 0)
