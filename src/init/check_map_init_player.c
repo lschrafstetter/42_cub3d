@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 18:33:28 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/05 18:34:33 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:45:07 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	check_map_init_player(t_data *data)
 		j = 0;
 		while (j < data->map->width)
 		{
-			j++;
 			check_tile(data, i, j);
+			j++;
 		}
 		i++;
 	}

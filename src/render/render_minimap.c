@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:57:42 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 11:56:36 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:12:08 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	render_minimap(t_data *data, t_image *image)
 	indexes = malloc(sizeof(int) * 4);
 	if (!indexes)
 	{
-		free(image);//
+		image_free(image, data);
 		error_msg_exit(data, "Error mallocing int array");
 	}
 	draw_map(data, image, indexes);

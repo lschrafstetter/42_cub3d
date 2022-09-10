@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 09:28:15 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 09:55:23 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:46:46 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ void	open_door(t_data *data)
 		data->map->tiles[h->map_y][h->map_x] = tile_door;
 	else if (data->map->tiles[h->map_y][h->map_x] == tile_door)
 		data->map->tiles[h->map_y][h->map_x] = tile_door_open;
+	free(h);
 }

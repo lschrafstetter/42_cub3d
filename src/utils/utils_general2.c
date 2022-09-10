@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 15:57:05 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:37:31 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,15 @@ int	is_number(char *str)
 int	is_wall_door_closed(int tile)
 {
 	return (tile == tile_wall || tile == tile_door);
+}
+
+char	*get_first_n_chars(char *str, int n_chars)
+{
+	char	*ret;
+
+	ret = ft_calloc(n_chars + 1, 1);
+	if (!ret)
+		return (NULL);
+	ft_strlcat(ret, str, n_chars + 1);
+	return (ret);
 }

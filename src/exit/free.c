@@ -6,11 +6,21 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:45:15 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 15:27:51 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:23:59 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	image_free(t_image *image, t_data *data)
+{
+	if (image->image)
+		mlx_destroy_image(data->mlx, image->image);
+	if (image->addr)
+		free(image->addr);
+	free(image);
+	image = NULL;
+}
 
 static void	free_wall(t_wall *image)
 {
@@ -32,6 +42,8 @@ static void	free_walls(t_walls *walls)
 		free_wall(walls->s);
 	if (walls->w)
 		free_wall(walls->w);
+	if (walls->door)
+		free_wall(walls->door);
 	free(walls);
 	walls = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/06 09:12:38 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:42:44 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ int	**array_init(int height, int width)
 	i = 0;
 	while (i < height)
 	{
-		int_arr[i] = malloc(width * sizeof(int));
+		int_arr[i] = ft_calloc(width, sizeof(int));
 		if (!int_arr[i])
 		{
 			free_intarray(int_arr);
 			return (NULL);
 		}
-		*(int_arr[i]) = 0;
 		i++;
 	}
 	int_arr[height] = NULL;
@@ -74,15 +73,4 @@ void	free_strarray(char **arr)
 		free(arr);
 		arr = NULL;
 	}
-}
-
-char	*get_first_n_chars(char *str, int n_chars)
-{
-	char	*ret;
-
-	ret = ft_calloc(n_chars + 1, 1);
-	if (!ret)
-		return (NULL);
-	ft_strlcat(ret, str, n_chars + 1);
-	return (ret);
 }

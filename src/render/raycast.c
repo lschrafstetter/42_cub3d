@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:20:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/09 17:38:26 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:12:13 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,9 @@ void	ray_cast(t_data *data, t_image *image, int ray_n)
 	h = malloc(sizeof(t_raycast_h));
 	if (!h)
 	{
-		free(image); //
+		image_free(image, data);
 		error_msg_exit(data, "Error mallocing raycast helper");
 	}
-	(void)ray_n;
 	ray_init(data, h, ray_n);
 	get_step_and_initial_dist(data, h);
 	perform_dda(data, h);

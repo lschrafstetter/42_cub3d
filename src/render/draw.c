@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:04:41 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 09:23:14 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:14:37 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,8 @@ static void	draw_wall(t_data *data, t_image *image, t_raycast_h *h, int ray_n)
 	int		i;
 	int		image_y;
 
-	/*printf("Ray_n: %i Startdraw: %i Enddraw: %i\n", ray_n, h->draw_start, h->draw_end);
-	printf("n_keys of wall: %i line_height: %i\n", h->wall->n_keys, h->line_height);
-	printf("Ray_dir_x: %f ray_dir_y: %f\n", h->ray_dir_x, h->ray_dir_y);
-	usleep(100000);*/
 	step = (double)(h->wall->height) / (double)(h->line_height);
 	image_pos = (h->draw_start - SCREEN_HEIGHT / 2 + h->line_height / 2) * step;
-	/*i = h->draw_start;
-	while (i < h->draw_end)
-	{
-		image_y = (int)image_pos;// & (h->wall->height - 1);
-		image_pos += step;
-		color = h->wall->pixels[image_y][h->image_x];
-		image_pix_put(image, ray_n, i, color);
-		i++;
-	}*/
 	i = 0;
 	while (i < SCREEN_HEIGHT)
 	{
@@ -41,9 +28,10 @@ static void	draw_wall(t_data *data, t_image *image, t_raycast_h *h, int ray_n)
 			image_pix_put(image, ray_n, i, *(data->map->c_ceiling));
 		else if (i < h->draw_end)
 		{
-			image_y = (int)image_pos;// & (h->wall->height - 1);
+			image_y = (int)image_pos;
 			image_pos += step;
-			image_pix_put(image, ray_n, i, h->wall->pixels[image_y][h->image_x]);
+			image_pix_put(image, ray_n, i, \
+							h->wall->pixels[image_y][h->image_x]);
 		}
 		else
 			image_pix_put(image, ray_n, i, *(data->map->c_floor));
@@ -54,8 +42,8 @@ static void	draw_wall(t_data *data, t_image *image, t_raycast_h *h, int ray_n)
 static void	calculate_image_parameters(t_raycast_h *h)
 {
 	h->image_x = (int)(h->wall_x * (double)(h->wall->width));
-	/*if ((h->side == 0 && h->ray_dir_x > 0) || (h->side && h->ray_dir_y < 0))
-		h->image_x = h->wall->width - h->image_x - 1;*/
+	if ((h->side == 0 && h->ray_dir_x > 0) || (h->side && h->ray_dir_y < 0))
+		h->image_x = h->wall->width - h->image_x - 1;
 }
 
 static t_wall	*decide_wall(t_data *data, t_raycast_h *h)
@@ -70,8 +58,7 @@ static t_wall	*decide_wall(t_data *data, t_raycast_h *h)
 		return (data->map->walls->w);
 	if (h->ray_dir_x < 0 && h->side == 0)
 		return (data->map->walls->e);
-	printf("Returning NULL\n");
-	return (NULL);//
+	return (NULL);
 }
 
 static void	calculate_draw_parameters(t_data *data, t_raycast_h *h)

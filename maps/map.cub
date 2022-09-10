@@ -2,7 +2,7 @@ NO ./maps/assets/bark.xpm
 SO ./maps/assets/grass.xpm
 WE ./maps/assets/bookshelf.xpm
 EA ./maps/assets/planks.xpm
-DO ./maps/assets/door.xpm
+DO ./maps/assets/grass.xpm
 
 F 190,200,195
 C 37,180,104

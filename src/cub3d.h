@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 09:48:03 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/10 10:12:00 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,6 +258,7 @@ int			is_number(char *str);
 void		free_strarray(char **arr);
 int			str_arr_len(char **str_arr);
 void		free_intarray(int **int_arr);
+void		image_free(t_image *image, t_data *data);
 int			**array_init(int height, int width);
 char		*get_first_n_chars(char *str, int n_chars);
 void		delay(bool start, unsigned long time);
