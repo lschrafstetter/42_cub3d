@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/25 17:39:13 by lschrafs          #+#    #+#              #
-#    Updated: 2022/08/31 09:52:43 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/11 14:05:59 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRCS = \
 		ft_printf ft_printchar ft_printstring ft_printint ft_printuint \
 		ft_printhex \
 		\
-		get_next_line get_next_line_utils
+		get_next_line get_next_line_utils 
 		
 
 OBJS = ${SRCS:%=%.o}

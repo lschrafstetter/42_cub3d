@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 10:37:31 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:13:41 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,11 @@ char	*get_first_n_chars(char *str, int n_chars)
 		return (NULL);
 	ft_strlcat(ret, str, n_chars + 1);
 	return (ret);
+}
+
+int	free_str_return(char *str, int return_value)
+{
+	if (str)
+		free(str);
+	return (return_value);
 }

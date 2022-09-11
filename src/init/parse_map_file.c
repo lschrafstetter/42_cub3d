@@ -6,11 +6,20 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:25:26 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 09:34:37 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 12:45:03 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static int	check_map_completeness(t_map *map)
+{
+	if (!map->c_ceiling || !map->c_floor || !map->walls->n || !map->walls->e \
+		|| !map->walls->s || !map->walls->w || !map->walls->door \
+		|| !map->map_found)
+		return (1);
+	return (0);
+}
 
 static t_map	*map_init(t_data *data)
 {
@@ -39,6 +48,9 @@ static t_map	*map_init(t_data *data)
 void	parse_map_file(t_data *data, char *map_path)
 {
 	data->map = map_init(data);
-	parse_map_properties(data, map_path);
+	if (parse_map_properties(data, map_path))
+		error_msg_exit(data, "Error\nError parsing map properties");
+	if (check_map_completeness(data->map))
+		error_msg_exit(data, "Error\nMap not complete");
 	parse_map_tiles(data, map_path);
 }

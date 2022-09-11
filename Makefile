@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/10 09:33:03 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/11 14:22:47 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,3 +100,5 @@ fclean: clean
 	@make -C libft fclean
 
 re: fclean all
+
+bonus: all

@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 10:25:48 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:14:16 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,11 +188,11 @@ typedef struct s_raycast_h
 t_data		*data_init(char *map_path);
 void		parse_map_file(t_data *data, char *map_path);
 
-void		parse_map_properties(t_data *data, char *map_path);
-void		parse_floor_ceiling(t_data *data, char *str);
+int			parse_map_properties(t_data *data, char *map_path);
+int			parse_floor_ceiling(t_data *data, char **arr);
 void		parse_map_tiles(t_data *data, char *map_path);
 
-int			parse_wall_image(t_data *data, char *str);
+int			parse_wall_image(t_data *data, char **arr);
 int			wall_parse_properties(t_wall *wall, char *line);
 int			wall_parse_keys(t_wall *wall, char *line);
 int			wall_parse_pixels(t_wall *wall, char *line, int i);
@@ -245,6 +245,7 @@ void		error_exit(char *str);
 void		cub_exit(t_data *data, int exit_code);
 void		free_all(t_data *data);
 void		mlx_destroy(t_data *data);
+void		free_wall(t_wall *image);
 
 //* UTILS MATH *//
 
@@ -257,13 +258,14 @@ float		get_dir_y(float dir);
 
 int			is_hex(char *str);
 int			is_number(char *str);
-void		free_strarray(char **arr);
 int			str_arr_len(char **str_arr);
-void		free_intarray(int **int_arr);
-void		image_free(t_image *image, t_data *data);
 int			**array_init(int height, int width);
 char		*get_first_n_chars(char *str, int n_chars);
 void		delay(bool start, unsigned long time);
 int			is_wall_door_closed(int tile);
+void		free_strarray(char **arr);
+int			free_str_return(char *str, int return_value);
+void		free_intarray(int **int_arr);
+void		image_free(t_image *image, t_data *data);
 
 #endif

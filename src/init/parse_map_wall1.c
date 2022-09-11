@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:21:14 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 10:46:15 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 14:18:31 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,63 +28,57 @@ static t_wall	*wall_init(t_data *data)
 	return (wall);
 }
 
+static void	decide_refactor(int i, int *ret, t_wall *wall, char *line)
+{
+	if (i == 4)
+	{
+		if (wall_parse_properties(wall, line))
+			*ret = 1;
+		wall->hashtable = hashtable_init(100);
+		if (!(wall->hashtable))
+			*ret = 1;
+		if (!(*ret))
+			wall->pixels = array_init(wall->height, wall->width);
+		if (!wall->pixels)
+			*ret = 1;
+	}
+	else if (i > 4 && i <= wall->n_keys + 4)
+	{
+		if (wall_parse_keys(wall, line))
+			*ret = 1;
+	}
+	else if (i > wall->n_keys + 5 && i <= wall->n_keys + 5 + wall->height)
+	{
+		if (wall_parse_pixels(wall, line, i))
+			*ret = 1;
+	}
+}
+
 static t_wall	*parse_file(t_data *data, int fd)
 {
 	t_wall	*wall;
 	char	*line;
 	int		i;
+	int		ret;
 
 	wall = wall_init(data);
 	if (!wall)
 		return (NULL);
+	ret = 0;
 	line = get_next_line(fd);
 	i = 1;
-	while (line)
+	while (line && !ret)
 	{
-		if (i == 4)
-		{
-			if (wall_parse_properties(wall, line))
-			{
-				free(line);
-				printf("Wall properties\n");//
-				return (NULL);
-			}
-			wall->hashtable = hashtable_init(100);
-			if (!(wall->hashtable))
-			{
-				free(line);
-				printf("Hashtable\n");//
-				return (NULL);
-			}
-			wall->pixels = array_init(wall->height, wall->width);
-			if (!wall->pixels)
-			{
-				free(line);
-				printf("Pixel Array\n");//
-				return (NULL);
-			}
-		}
-		else if (i > 4 && i <= wall->n_keys + 4)
-		{
-			if (wall_parse_keys(wall, line))
-			{
-				free(line);
-				printf("Parse Keys\n");//
-				return (NULL);
-			}
-		}
-		else if (i > wall->n_keys + 5 && i <= wall->n_keys + 5 + wall->height)
-		{
-			if (wall_parse_pixels(wall, line, i))
-			{
-				free(line);
-				printf("Wall Parse Pixels\n");//
-				return (NULL);
-			}
-		}
+		decide_refactor(i, &ret, wall, line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
+	}
+	if (ret == 1 || i < 4)
+	{
+		free(line);
+		free_wall(wall);
+		return (NULL);
 	}
 	return (wall);
 }
@@ -95,8 +89,8 @@ static t_wall	*parse_wall(t_data *data, char *str)
 	char	*filename;
 	int		fd_wall;
 
-	filename = ft_strtrim(&(str[3]), "\n");
-	if (ft_strncmp(ft_strrchr(filename, '.'), ".xpm", 5))////////
+	filename = ft_strtrim(str, "\n");
+	if (ft_strncmp(ft_strrchr(filename, '.'), ".xpm", 5))
 	{
 		free(filename);
 		return (NULL);
@@ -110,29 +104,30 @@ static t_wall	*parse_wall(t_data *data, char *str)
 	return (wall);
 }
 
-int	parse_wall_image(t_data *data, char *str)
+int	parse_wall_image(t_data *data, char **arr)
 {
 	t_wall	*wall_to_parse;
 
-	if ((!ft_strncmp(str, "DO ", 3) && data->map->walls->door) || \
-		(!ft_strncmp(str, "NO ", 3) && data->map->walls->n) || \
-		(!ft_strncmp(str, "EA ", 3) && data->map->walls->e) || \
-		(!ft_strncmp(str, "SO ", 3) && data->map->walls->s) || \
-		(!ft_strncmp(str, "WE ", 3) && data->map->walls->w))
+	if (str_arr_len(arr) == 3 && *(arr[2]) != '\n')
 		return (1);
-	if (!ft_strncmp(str, "DO ", 3))
-		wall_to_parse = data->map->walls->door;
-	else if (!ft_strncmp(str, "NO ", 3))
-		wall_to_parse = data->map->walls->n;
-	else if (!ft_strncmp(str, "EA ", 3))
-		wall_to_parse = data->map->walls->e;
-	else if (!ft_strncmp(str, "SO ", 3))
-		wall_to_parse = data->map->walls->s;
-	else
-		wall_to_parse = data->map->walls->w;
-	printf("%s\n", str);///
-	wall_to_parse = parse_wall(data, str);
+	if ((!ft_strncmp(arr[0], "DO", 3) && data->map->walls->door) || \
+		(!ft_strncmp(arr[0], "NO", 3) && data->map->walls->n) || \
+		(!ft_strncmp(arr[0], "EA", 3) && data->map->walls->e) || \
+		(!ft_strncmp(arr[0], "SO", 3) && data->map->walls->s) || \
+		(!ft_strncmp(arr[0], "WE", 3) && data->map->walls->w))
+		return (1);
+	wall_to_parse = parse_wall(data, arr[1]);
 	if (!wall_to_parse)
 		return (1);
+	if (!ft_strncmp(arr[0], "DO", 3))
+		data->map->walls->door = wall_to_parse;
+	else if (!ft_strncmp(arr[0], "NO", 3))
+		data->map->walls->n = wall_to_parse;
+	else if (!ft_strncmp(arr[0], "EA", 3))
+		data->map->walls->e = wall_to_parse;
+	else if (!ft_strncmp(arr[0], "SO", 3))
+		data->map->walls->s = wall_to_parse;
+	else
+		data->map->walls->w = wall_to_parse;
 	return (0);
 }

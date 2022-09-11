@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 10:45:15 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 10:23:59 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 13:44:38 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	image_free(t_image *image, t_data *data)
 	image = NULL;
 }
 
-static void	free_wall(t_wall *image)
+void	free_wall(t_wall *image)
 {
 	if (image->hashtable)
 		hashtable_delete(image->hashtable);
