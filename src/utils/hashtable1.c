@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:29:34 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/08/31 13:48:13 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 09:59:00 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@ t_hashlist	*hashlist_new(char *key, int value)
 	t_hashlist	*new;
 
 	new = malloc(sizeof(t_hashlist));
+	if (!new)
+		return (NULL);
 	new->next = NULL;
 	new->key = ft_strdup(key);
+	if (!new->key)
+	{
+		free(new);
+		return (NULL);
+	}
 	new->value = value;
 	return (new);
 }

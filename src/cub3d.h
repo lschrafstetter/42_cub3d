@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 10:12:00 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 10:25:48 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,11 +192,10 @@ void		parse_map_properties(t_data *data, char *map_path);
 void		parse_floor_ceiling(t_data *data, char *str);
 void		parse_map_tiles(t_data *data, char *map_path);
 
-void		parse_wall_image(t_data *data, char *str);
-void		wall_parse_properties(t_wall *wall, char *line, \
-									t_data *data, int fd);
-void		wall_parse_keys(t_wall *wall, char *line, t_data *data, int fd);
-void		wall_parse_pixels(t_wall *wall, char *line, int fd, int i);
+int			parse_wall_image(t_data *data, char *str);
+int			wall_parse_properties(t_wall *wall, char *line);
+int			wall_parse_keys(t_wall *wall, char *line);
+int			wall_parse_pixels(t_wall *wall, char *line, int i);
 
 void		check_map_init_player(t_data *data);
 t_player	*player_init(t_data *data, int i, int j);
@@ -239,6 +238,9 @@ void		image_pix_put(t_image *image, int x, int y, int color);
 //* UTILS EXIT *//
 
 void		error_msg_exit(t_data *data, char *str);
+void		error_fd_msg_exit(t_data *data, char *str, int fd);
+void		error_str_fd_msg_exit(t_data *data, char *msg, \
+									char *free_str, int fd);
 void		error_exit(char *str);
 void		cub_exit(t_data *data, int exit_code);
 void		free_all(t_data *data);

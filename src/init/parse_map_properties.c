@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:52:48 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 09:39:30 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 10:48:32 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ static void	parse_str(t_data *data, char *str, int fd)
 		close_free_exit(data, str, fd);
 	if (is_no_ea_so_we_do(str))
 	{
-		parse_wall_image(data, str);
+		printf("Line of map (fd: %i): %s\n", fd, str);//
+		if (parse_wall_image(data, str))
+		{
+			printf("Error parsing wall image\n");///
+			close_free_exit(data, str, fd);
+		}
 		return ;
 	}
 	if (!ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
@@ -62,5 +67,6 @@ void	parse_map_properties(t_data *data, char *map_path)
 		free(str);
 		str = get_next_line(fd);
 	}
+	printf("Successful parsing map properties\n");
 	close(fd);
 }

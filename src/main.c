@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:30 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 10:45:34 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 09:08:17 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	render_next_frame(t_data *data)
 {
-	delay(true, DELAY);
+	//delay(true, DELAY);
 	move(data);
 	render_scene(data);
-	delay(false, DELAY);
+	//delay(false, DELAY);
 	return (0);
 }
 
