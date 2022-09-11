@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:57:42 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 11:04:14 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:52:01 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	color_select(t_data *data, int i, int j)
 {	
 	if (i > data->map->height - 1 || j > data->map->width - 1)
 		return (0xFFFFFF);
+	else if (data->map->tiles[i][j] == tile_empty)
+		return (0xFFFFFF);
 	else if (data->map->tiles[i][j] == tile_wall)
 		return (0x0);
 	else if (data->map->tiles[i][j] == tile_door)
@@ -23,7 +25,7 @@ static int	color_select(t_data *data, int i, int j)
 	else if (data->map->tiles[i][j] == tile_door_open)
 		return (0x0000FF);
 	else
-		return (0xd3d3d3);
+		return (0xD3D3D3);
 }
 
 static void	draw_pixel(t_data *data, t_image *image, int *indexes)

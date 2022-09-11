@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 13:32:07 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/08 14:18:14 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:49:26 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	hook_mouse(int x, int y, t_data *data)
 {
-	int	tertiant;
+	int	octant;
 
 	(void) y;
-	tertiant = SCREEN_WIDTH / 3;
-	data->player->rot_left = (x < tertiant);
-	data->player->rot_right = (x > SCREEN_WIDTH - tertiant);
+	octant = SCREEN_WIDTH / 8;
+	data->player->rot_left = (x < octant);
+	data->player->rot_right = (x > SCREEN_WIDTH - octant);
 	return (0);
 }

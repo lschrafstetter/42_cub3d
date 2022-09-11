@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 14:14:16 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/11 21:48:54 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@
 # include <sys/time.h>
 # include <limits.h>
 
-# define DELAY 33333
-# define MOV_STEP 0.066f
-# define ROT_STEP 0.15705f
+# define MOV_STEP 0.0666f
+# define ROT_STEP 0.0785f
 
 # define SCREEN_HEIGHT 768
 # define SCREEN_WIDTH 1024
@@ -261,7 +260,6 @@ int			is_number(char *str);
 int			str_arr_len(char **str_arr);
 int			**array_init(int height, int width);
 char		*get_first_n_chars(char *str, int n_chars);
-void		delay(bool start, unsigned long time);
 int			is_wall_door_closed(int tile);
 void		free_strarray(char **arr);
 int			free_str_return(char *str, int return_value);

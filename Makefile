@@ -6,7 +6,7 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/11 14:22:47 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/11 21:32:59 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ SRCS_NAMES	= 	main \
 				$(RENDER)render_minimap \
 				$(RENDER)render_pov \
 				$(RENDER)render_scene \
-				$(UTILS)delay \
 				$(UTILS)hashtable1 \
 				$(UTILS)hashtable2 \
 				$(UTILS)math \
