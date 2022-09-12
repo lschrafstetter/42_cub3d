@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:24:29 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 21:41:59 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/12 11:55:26 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ t_player	*player_init(t_data *data, int i, int j)
 	player->mov_backward = false;
 	player->rot_left = false;
 	player->rot_right = false;
-	player->rot_left_slow = false;
-	player->rot_right_slow = false;
 	player->strafe_left = false;
 	player->strafe_right = false;
 	return (player);
