@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:49:06 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/10 10:42:44 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:59:11 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,28 @@ void	free_strarray(char **arr)
 		free(arr);
 		arr = NULL;
 	}
+}
+
+int	str_len_without_spaces(char **arr)
+{
+	int	n_chars;
+	int	i;
+
+	n_chars = 0;
+	arr++;
+	while (*arr)
+	{
+		i = 0;
+		while ((*arr)[i])
+		{
+			while ((*arr)[i] == ' ')
+			{
+				n_chars++;
+				i++;
+			}
+			i++;
+		}
+		arr++;
+	}
+	return (n_chars);
 }

@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:24:29 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/12 11:55:26 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:22:36 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_player	*player_init(t_data *data, int i, int j)
 	player->dir_y = ((data->map->tiles[i][j] == tile_p_s) * 1 + \
 						(data->map->tiles[i][j] == tile_p_n) * -1);
 	player->plane_x = -player->dir_y * 0.66;
-	player->plane_y = -player->dir_x * 0.66;
+	player->plane_y = player->dir_x * 0.66;
 	player->mov_forward = false;
 	player->mov_backward = false;
 	player->rot_left = false;

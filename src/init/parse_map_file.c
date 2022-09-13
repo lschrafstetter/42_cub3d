@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:25:26 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 12:45:03 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/13 13:23:23 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	parse_map_file(t_data *data, char *map_path)
 {
 	data->map = map_init(data);
 	if (parse_map_properties(data, map_path))
-		error_msg_exit(data, "Error\nError parsing map properties");
+		error_msg_exit(data, "Error\nError parsing map");
 	if (check_map_completeness(data->map))
 		error_msg_exit(data, "Error\nMap not complete");
 	parse_map_tiles(data, map_path);

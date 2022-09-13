@@ -6,11 +6,11 @@
 #    By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/25 11:16:12 by lschrafs          #+#    #+#              #
-#    Updated: 2022/09/11 21:32:59 by lschrafs         ###   ########.fr        #
+#    Updated: 2022/09/13 13:03:39 by lschrafs         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= cub3d
+NAME 		= cub3D
 
 COMPILER 	= cc
 CFLAGS 		= -Wall -Wextra -Werror
