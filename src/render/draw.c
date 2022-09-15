@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 16:04:41 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 11:18:46 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/15 22:30:14 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static t_wall	*decide_wall(t_data *data, t_raycast_h *h)
 	if (data->map->tiles[h->map_y][h->map_x] == tile_door)
 		return (data->map->walls->door);
 	if (h->ray_dir_y > 0 && h->side)
-		return (data->map->walls->n);
-	if (h->ray_dir_y < 0 && h->side)
 		return (data->map->walls->s);
+	if (h->ray_dir_y < 0 && h->side)
+		return (data->map->walls->n);
 	if (h->ray_dir_x > 0 && h->side == 0)
-		return (data->map->walls->w);
-	if (h->ray_dir_x < 0 && h->side == 0)
 		return (data->map->walls->e);
+	if (h->ray_dir_x < 0 && h->side == 0)
+		return (data->map->walls->w);
 	return (NULL);
 }
 
