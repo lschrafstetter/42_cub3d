@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:32:46 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/13 14:26:07 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:54:43 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*build_new_str_without_spaces(char **arr)
 	int		i;
 	int		j;
 
-	helper = malloc(str_len_without_spaces(arr));
+	helper = ft_calloc(str_len_without_spaces_nl(arr) + 1, 1);
 	if (!helper)
 		return (NULL);
 	j = 0;
@@ -56,14 +56,13 @@ static char	*build_new_str_without_spaces(char **arr)
 		i = 0;
 		while ((*arr)[i])
 		{
-			while ((*arr)[i] == ' ')
-				i++;
-			helper[j++] = (*arr)[i++];
+			if ((*arr)[i] != ' ' && (*arr)[i] != '\n')
+				helper[j++] = (*arr)[i];
+			i++;
 		}
 		arr++;
 	}
-	ret = ft_strtrim(helper, "\n");
-	free(helper);
+	ret = helper;
 	return (ret);
 }
 
@@ -75,7 +74,6 @@ static char	**prepare_string_array(char **arr)
 	without_spaces = build_new_str_without_spaces(arr);
 	if (!without_spaces)
 		return (NULL);
-	printf("Without spaces: (%s)\n", without_spaces);
 	str_arr = ft_split(without_spaces, ',');
 	free(without_spaces);
 	return (str_arr);

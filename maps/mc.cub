@@ -4,7 +4,7 @@ WE ./maps/mc_assets/brick3.xpm
 EA ./maps/mc_assets/brick4.xpm
 DO ./maps/mc_assets/door.xpm
 
-F 190,200,195
+F  190,200,195
 C 58,50,45
 
   111111111111111111111

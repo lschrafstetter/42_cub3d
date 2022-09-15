@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:03:23 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/13 13:59:23 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:34:37 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ float		get_dir_y(float dir);
 int			is_hex(char *str);
 int			is_number(char *str);
 int			str_arr_len(char **str_arr);
-int			str_len_without_spaces(char **arr);
+int			str_len_without_spaces_nl(char **arr);
 int			**array_init(int height, int width);
 char		*get_first_n_chars(char *str, int n_chars);
 int			is_wall_door_closed(int tile);

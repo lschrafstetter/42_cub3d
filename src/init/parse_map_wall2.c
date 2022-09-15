@@ -6,7 +6,7 @@
 /*   By: lschrafs <lschrafs@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:55:46 by lschrafs          #+#    #+#             */
-/*   Updated: 2022/09/11 14:15:12 by lschrafs         ###   ########.fr       */
+/*   Updated: 2022/09/15 13:36:52 by lschrafs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ int	wall_parse_pixels(t_wall *wall, char *line, int i)
 	helper2 = ft_strtrim(helper1, "\"");
 	free(helper1);
 	if ((int)ft_strlen(helper2) != wall->width * wall->key_len)
-		free_str_return(helper2, 1);
+		return (free_str_return(helper2, 1));
 	j = 0;
 	while (j < wall->width)
 	{
 		helper1 = get_first_n_chars(&(helper2[j * wall->key_len]), \
 									wall->key_len);
 		if (!helper1 || (i - 6 - wall->n_keys < 0))
-			free_str_return(helper2, 1);
+			return (free_str_return(helper2, 1));
 		wall->pixels[i - 6 - wall->n_keys][j] = \
 								hashtable_get(wall->hashtable, 100, helper1);
 		free(helper1);
