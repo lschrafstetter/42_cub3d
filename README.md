@@ -4,7 +4,7 @@ This is the cub3D project of the 42 curriculum. A wolfenstein3D clone to practic
 
 ![image](https://user-images.githubusercontent.com/98647720/191196415-c2b10329-ed74-4d3c-a3df-ea616e8fa730.png)
 
-How to use it (Mac or iOS):
+How to use it (Linux or macOS):
 - This project used the minilibX of the 42 School: an X-Window API in C:
  - MLX https://github.com/42Paris/minilibx-linux
  - on Linux: "make" the library via the Makefile and copy the header and library file (mlx.h and libmlx.a) in your according PATH folders.
