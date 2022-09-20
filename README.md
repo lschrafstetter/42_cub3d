@@ -20,7 +20,7 @@ How to play:
 - open doors: e
 - end: esc
 
-The subject was to create a wolfenstein3D clone / raycaster with the following features:
+The task was to create a wolfenstein3D clone / raycaster with the following features:
 - a 3D game with movement (forward/backwards, strafing, rotation) with wasd (rotation error keys)
 - 4 different wall textures which differ according to the direction they are projected at (no/ea/so/we)
 - floor and ceiling color can be changed in the map file
