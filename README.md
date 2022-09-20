@@ -12,9 +12,9 @@ How to use it (Linux or macOS):
 - clone the repo
 - "make" via Makefile
 - you need a working x server (https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
-- ./cub3D maps/mc.cub or (longer loading because of bigger texture files) ./cub3D maps/lsd.cub (TRIGGER WARNING: EPILEPSY!)
 
 How to play:
+- ./cub3D maps/mc.cub or (longer loading because of bigger texture files) ./cub3D maps/lsd.cub (TRIGGER WARNING: EPILEPSY!)
 - movement: wasd
 - rotation: arrow left/right or mouse
 - open doors: e
